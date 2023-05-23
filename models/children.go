@@ -11,4 +11,5 @@ type Children struct {
 	ChildName      string    `json:"child_name"`
 	ChildAge       int       `json:"child_age"`
 	ChildBirthDate time.Time `json:"time"`
+	UserID         uint
 }

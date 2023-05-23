@@ -10,5 +10,6 @@ type Event struct {
 	gorm.Model
 	Name       string      `json:"name"`
 	Date       time.Time   `json:"date"`
-	EventItems []EventItem `gorm:"foreignKey:Id;references:ID"`
+	EventItems []EventItem `gorm:"foreignKey:EventID"`
+	CampaignID uint
 }

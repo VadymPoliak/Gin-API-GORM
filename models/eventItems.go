@@ -8,7 +8,8 @@ import (
 
 type EventItem struct {
 	gorm.Model
-	Name  string    `json:"name"`
-	Date  time.Time `json:"date"`
-	Taken bool      `json:"taken"`
+	Name    string    `json:"name"`
+	Date    time.Time `json:"date"`
+	Taken   bool      `json:"taken"`
+	EventID uint
 }

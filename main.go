@@ -73,7 +73,7 @@ func main() {
 	}
 
 	///////////// user 2
-	user2 := models.User{Email: "bar@gmail.com", FirstName: "John", LastName: "Doe", Password: "secret password", Phone: "99909999"}
+	user2 := models.User{Email: "bar@gmail.com", FirstName: "Johnny", LastName: "Doe", Password: "secret password", Phone: "99909999"}
 	user2.Children = []models.Children{
 		models.Children{
 			ChildName:      "Jane Doe",
@@ -158,6 +158,7 @@ func main() {
 
 	tasks.POST("/test", func(ctx *gin.Context) {
 		controllers.TestCreateUser(ctx, user2)
+		controllers.TestCreateUser(ctx, user)
 	})
 
 	err = routergin.Run("127.0.0.1:8000")

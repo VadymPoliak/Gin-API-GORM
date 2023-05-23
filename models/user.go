@@ -9,6 +9,6 @@ type User struct {
 	Email     string     `json:"email" binding:"required"`
 	Phone     string     `json:"phone" binding:"required"`
 	Password  string     `json:"password" binding:"required"`
-	Children  []Children `gorm:"foreignKey:ID;references:ID"`
-	Campaigns []Campaign `gorm:"foreignKey:ID;references:ID"`
+	Children  []Children `gorm:"foreignKey:UserID"`
+	Campaigns []Campaign `gorm:"foreignKey:UserID"`
 }

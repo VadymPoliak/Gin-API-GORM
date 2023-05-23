@@ -1,7 +1,14 @@
 package models
 
+import (
+	"time"
+
+	"github.com/jinzhu/gorm"
+)
+
 type Event struct {
-	Id     uint   `gorm:"primary_key;auto_increment" json:"id"`
-	UserId User   `gorm:"references:Id"`
-	Name   string `json:"first_name"`
+	gorm.Model
+	Name   string       `json:"name"`
+	Date   time.Time    `json:"date"`
+	Events []EventItems `gorm:"foreignKey:ID;references:ID"`
 }

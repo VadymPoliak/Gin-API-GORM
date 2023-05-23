@@ -27,7 +27,7 @@ func AddCampaign(context *gin.Context) {
 		panic(err)
 	}
 
-	user.Campaigns = append(user.Campaigns, models.Campaign{CampaignId: 1, Name: "XXX", BeginDate: beginDate})
+	user.Campaigns = append(user.Campaigns, models.Campaign{Name: "XXX", BeginDate: beginDate})
 	db.DB.Save(&user)
 
 	context.JSON(http.StatusOK, gin.H{"data": user})

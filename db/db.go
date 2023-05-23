@@ -33,7 +33,8 @@ func ConnectDatabase() {
 		panic(err)
 	}
 
-	createTables(dbconn)
+	// createTables(dbconn)
+	dbconn.AutoMigrate(&models.User{}, &models.Children{}, &models.Campaign{}, &models.Event{}, &models.EventItems{})
 
 	DB = dbconn
 

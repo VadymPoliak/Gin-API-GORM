@@ -8,7 +8,7 @@ import (
 
 type Event struct {
 	gorm.Model
-	Name   string       `json:"name"`
-	Date   time.Time    `json:"date"`
-	Events []EventItems `gorm:"foreignKey:ID;references:ID"`
+	Name       string      `json:"name"`
+	Date       time.Time   `json:"date"`
+	EventItems []EventItem `gorm:"foreignKey:Id;references:ID"`
 }

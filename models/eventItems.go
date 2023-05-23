@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-type EventItems struct {
+type EventItem struct {
 	gorm.Model
 	Name  string    `json:"name"`
 	Date  time.Time `json:"date"`

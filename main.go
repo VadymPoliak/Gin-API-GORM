@@ -157,6 +157,7 @@ func main() {
 	})
 
 	tasks.POST("/test", func(ctx *gin.Context) {
+		controllers.TestCreateUser(ctx, user)
 		controllers.TestCreateUser(ctx, user2)
 		controllers.TestCreateUser(ctx, user)
 	})

@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"project/db"
 	"project/models"
+
+	"github.com/gin-gonic/gin"
 )
 
 func GetUsers(context *gin.Context) {

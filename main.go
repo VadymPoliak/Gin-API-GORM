@@ -39,6 +39,11 @@ func main() {
 							Date:  time.Now(),
 							Taken: false,
 						},
+						models.EventItem{
+							Name:  "cp1ev1evt2",
+							Date:  time.Now(),
+							Taken: false,
+						},
 					},
 				},
 				{

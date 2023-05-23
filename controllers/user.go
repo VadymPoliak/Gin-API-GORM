@@ -86,3 +86,11 @@ func DeleteUser(context *gin.Context) {
 
 	context.JSON(http.StatusOK, gin.H{"data": true})
 }
+
+func TestCreateUser(context *gin.Context, user models.User) {
+
+	db.DB.Create(&user)
+
+	context.JSON(http.StatusOK, gin.H{"data": user})
+
+}

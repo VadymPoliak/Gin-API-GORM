@@ -77,6 +77,10 @@ func main() {
 		controllers.CreateUser(ctx)
 	})
 
+	tasks.POST("/test", func(ctx *gin.Context) {
+		controllers.TestCreateUser(ctx, user)
+	})
+
 	err = routergin.Run("127.0.0.1:8000")
 	if err != nil {
 		return

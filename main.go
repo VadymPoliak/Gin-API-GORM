@@ -12,6 +12,7 @@ import (
 
 func main() {
 
+	///////////// user 1
 	user := models.User{Email: "foo@gmail.com", FirstName: "Vadym", LastName: "Poliak", Password: "secret", Phone: "1234-44"}
 	user.Children = []models.Children{
 		models.Children{
@@ -49,10 +50,88 @@ func main() {
 				{
 					Name: "evcp1ev2",
 					Date: time.Now(),
+					EventItems: []models.EventItem{
+						models.EventItem{
+							Name:  "cp1ev2evt1",
+							Date:  time.Now(),
+							Taken: false,
+						},
+						models.EventItem{
+							Name:  "cp1ev2evt2",
+							Date:  time.Now(),
+							Taken: false,
+						},
+						models.EventItem{
+							Name:  "cp1ev2evt3",
+							Date:  time.Now(),
+							Taken: false,
+						},
+					},
 				},
 			},
 		},
 	}
+
+	///////////// user 2
+	user2 := models.User{Email: "bar@gmail.com", FirstName: "John", LastName: "Doe", Password: "secret password", Phone: "99909999"}
+	user2.Children = []models.Children{
+		models.Children{
+			ChildName:      "Jane Doe",
+			ChildAge:       10,
+			ChildBirthDate: time.Now(),
+		},
+		models.Children{
+			ChildName:      "Sarah Doe",
+			ChildAge:       10,
+			ChildBirthDate: time.Now(),
+		},
+	}
+	user2.Campaigns = []models.Campaign{
+		models.Campaign{
+			Name:      "Campaign1",
+			BeginDate: time.Now(),
+			Events: []models.Event{
+				{
+					Name: "evcp1ev1",
+					Date: time.Now(),
+					EventItems: []models.EventItem{
+						models.EventItem{
+							Name:  "cp1ev1evt1",
+							Date:  time.Now(),
+							Taken: false,
+						},
+						models.EventItem{
+							Name:  "cp1ev1evt2",
+							Date:  time.Now(),
+							Taken: false,
+						},
+					},
+				},
+				{
+					Name: "evcp1ev2",
+					Date: time.Now(),
+					EventItems: []models.EventItem{
+						models.EventItem{
+							Name:  "cp1ev2evt1",
+							Date:  time.Now(),
+							Taken: false,
+						},
+						models.EventItem{
+							Name:  "cp1ev2evt2",
+							Date:  time.Now(),
+							Taken: false,
+						},
+						models.EventItem{
+							Name:  "cp1ev2evt3",
+							Date:  time.Now(),
+							Taken: false,
+						},
+					},
+				},
+			},
+		},
+	}
+
 	//var client *mongo.Client
 
 	//var JwtHandlers = jwthandlers.NewJwtHndlrs(client)

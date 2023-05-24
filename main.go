@@ -152,8 +152,17 @@ func main() {
 	tasks.GET("/users", func(ctx *gin.Context) {
 		controllers.GetUsers(ctx)
 	})
+	tasks.GET("/users/:id", func(ctx *gin.Context) {
+		controllers.GetUsers(ctx)
+	})
 	tasks.POST("/users", func(ctx *gin.Context) {
 		controllers.CreateUser(ctx)
+	})
+	tasks.PUT("/users/:id", func(ctx *gin.Context) {
+		controllers.UpdateUser(ctx)
+	})
+	tasks.DELETE("/users/:id", func(ctx *gin.Context) {
+		controllers.DeleteUser(ctx)
 	})
 
 	tasks.POST("/test", func(ctx *gin.Context) {

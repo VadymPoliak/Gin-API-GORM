@@ -168,8 +168,27 @@ func main() {
 	tasks.GET("/children/:user_id", func(ctx *gin.Context) {
 		controllers.GetChildrenByUser(ctx)
 	})
+	tasks.POST("/children", func(ctx *gin.Context) {
+		controllers.CreateChildren(ctx)
+	})
+	tasks.PUT("/children/:id", func(ctx *gin.Context) {
+		controllers.UpdateChildren(ctx)
+	})
+	tasks.DELETE("/children/:id", func(ctx *gin.Context) {
+		controllers.DeleteChildren(ctx)
+	})
+
 	tasks.GET("/campaigns/:user_id", func(ctx *gin.Context) {
 		controllers.GetCampaignByUser(ctx)
+	})
+	tasks.POST("/campaign", func(ctx *gin.Context) {
+		controllers.CreateCampaign(ctx)
+	})
+	tasks.PUT("/campaign/:id", func(ctx *gin.Context) {
+		controllers.UpdateCampaign(ctx)
+	})
+	tasks.DELETE("/campaign/:id", func(ctx *gin.Context) {
+		controllers.DeleteCampaign(ctx)
 	})
 
 	tasks.GET("/events/:id", func(ctx *gin.Context) {

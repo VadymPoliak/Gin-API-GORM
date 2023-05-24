@@ -11,23 +11,24 @@ import (
 
 func GetEvents(context *gin.Context) {
 
-	var users []models.Event
+	var events []models.Event
 
-	db.DB.Find(&users)
+	db.DB.Preload("EventItems").Find(&events)
 
-	context.JSON(http.StatusOK, gin.H{"data": users})
+	context.JSON(http.StatusOK, gin.H{"data": events})
 
 }
 
-func GetEvent(context *gin.Context) {
-	var user models.Event
+func GetEventByID(context *gin.Context) {
+	var event models.Event
+	id := context.Param("id")
 
-	if err := db.DB.Where("id = ?", context.Param("id")).First(&user).Error; err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": "User not found!"})
+	if err := db.DB.Preload("EventItems").First(&event, id).Error; err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Event not found!"})
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{"data": user})
+	context.JSON(http.StatusOK, gin.H{"data": event})
 }
 
 func CreateEvent(context *gin.Context) {
@@ -39,14 +40,17 @@ func CreateEvent(context *gin.Context) {
 	}
 
 	event := models.Event{
-		Name: input.Name,
+		Name:       input.Name,
+		Date:       input.Date,
+		CampaignID: input.CampaignID,
+		EventItems: input.EventItems,
 	}
 
 	fmt.Println("event", event)
 
 	var a = db.DB.Create(&event)
 
-	fmt.Print("user", a)
+	fmt.Print("event", a)
 
 	context.JSON(http.StatusOK, gin.H{"data": event})
 
@@ -55,11 +59,11 @@ func CreateEvent(context *gin.Context) {
 func UpdateEvent(context *gin.Context) {
 	var event models.Event
 	if err := db.DB.Where("id = ?", context.Param("id")).First(&event).Error; err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": "User not found!"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Event not found!"})
 		return
 	}
 
-	var input models.UpdateUserInput
+	var input models.UpdateEventInput
 	if err := context.ShouldBindJSON(&input); err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -73,7 +77,7 @@ func UpdateEvent(context *gin.Context) {
 func DeleteEvent(context *gin.Context) {
 	var event models.Event
 	if err := db.DB.Where("id = ?", context.Param("id")).First(&event).Error; err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"error": "User not found!"})
+		context.JSON(http.StatusBadRequest, gin.H{"error": "Event not found!"})
 		return
 	}
 

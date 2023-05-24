@@ -165,6 +165,26 @@ func main() {
 		controllers.DeleteUser(ctx)
 	})
 
+	tasks.GET("/children/:user_id", func(ctx *gin.Context) {
+		controllers.GetChildrenByUser(ctx)
+	})
+	tasks.GET("/campaigns/:user_id", func(ctx *gin.Context) {
+		controllers.GetCampaignByUser(ctx)
+	})
+
+	tasks.GET("/events/:id", func(ctx *gin.Context) {
+		controllers.GetEventByID(ctx)
+	})
+	tasks.POST("/events", func(ctx *gin.Context) {
+		controllers.CreateEvent(ctx)
+	})
+	tasks.PUT("/events/:id", func(ctx *gin.Context) {
+		controllers.UpdateEvent(ctx)
+	})
+	tasks.DELETE("/events/:id", func(ctx *gin.Context) {
+		controllers.DeleteEvent(ctx)
+	})
+
 	tasks.POST("/test", func(ctx *gin.Context) {
 		controllers.TestCreateUser(ctx, user)
 		controllers.TestCreateUser(ctx, user2)

@@ -1,13 +1,17 @@
 package models
 
+import "time"
+
 type CreateEventInput struct {
-	Id     uint   `gorm:"primary_key;auto_increment" json:"id"`
-	UserId User   `gorm:"references:Id"`
-	Name   string `json:"first_name"`
+	Name       string      `json:"name"`
+	Date       time.Time   `json:"date"`
+	CampaignID uint        `json:"campaign_id" binding:"required"`
+	EventItems []EventItem `gorm:"foreignKey:EventID"`
 }
 
 type UpdateEventInput struct {
-	Id     uint   `gorm:"primary_key;auto_increment" json:"id"`
-	UserId User   `gorm:"references:Id"`
-	Name   string `json:"first_name"`
+	Name       string      `json:"name"`
+	Date       time.Time   `json:"date"`
+	CampaignID uint        `json:"campaign_id" binding:"required"`
+	EventItems []EventItem `gorm:"foreignKey:EventID"`
 }

@@ -24,11 +24,10 @@ func GetUser(context *gin.Context) {
 	var user models.User
 	id := context.Param("id")
 
-	db.DB.Preload("Children").Preload("Campaigns").First(&user, id)
-	// if err := db.DB.Where("id = ?", context.Param("id")).First(&user).Error; err != nil {
-	// 	context.JSON(http.StatusBadRequest, gin.H{"error": "User not found!"})
-	// 	return
-	// }
+	if err := db.DB.Preload("Children").Preload("Campaigns").First(&user, id).Error; err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"error": "User not found!"})
+		return
+	}
 
 	context.JSON(http.StatusOK, gin.H{"data": user})
 }
